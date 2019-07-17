@@ -6,7 +6,7 @@ object ValuesAndVariablesTypes extends App {
   // Values
   // -------------------------------------------------------------------------------------------------------------------
 
-  // Variables are immutable
+  // Values are immutable
   val x = 42
   println(x)
   // x = 4
