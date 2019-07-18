@@ -12,6 +12,12 @@ object OOBasics extends App {
 
 	person.greet("Daniel")
 
+	// Testing counter ...
+	val counter = new Counter()
+	counter.increment.print()
+	counter.increment(10).print()
+	counter.decrement.print()
+	counter.decrement(5).print()
 }
 
 // Constructor
@@ -43,12 +49,26 @@ class Novel(val name: String, val releaseYear: Int, val author: Writer) {
 
 class Counter(val count: Int = 0) {
 
-	def increment = new Counter(count + 1)
+	def increment: Counter = {
+		println("Incrementing")
+		new Counter(count + 1)
+	}
 
-	def increment(amount: Int) = new Counter(count + amount)
+	def increment(amount: Int): Counter = {
+		if (amount <= 0) this
+		else increment.increment(amount - 1)
+	}
 
-	def decrement = new Counter(count - 1)
+	def decrement: Counter = {
+		println("Decrementing")
+		new Counter(count - 1)
+	}
 
-	def decrement(amount: Int) = new Counter(count - amount)
+	def decrement(amount: Int): Counter = {
+		if (amount <= 0) this
+		else decrement.decrement(amount - 1)
+	}
+
+	def print(): Unit = println(count)
 
 }
